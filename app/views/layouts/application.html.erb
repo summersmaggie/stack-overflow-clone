@@ -9,13 +9,32 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if current_user %>
-      <%= current_user.email %> | <%= link_to "Sign out", '/signout' %>
-    <% else %>
-      <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
-    <% end %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Stack Overflow</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/questions/new">Ask a Question<span class="sr-only">(current)</span></a>
+        </li>
+        <br>
+        <li class="nav-item">
+          <a class="nav-link" href="/questions">Questions</a>
+        </li>
+      </ul>
+      <li class="navbar-nav mr-auto" id="login">
+        <% if current_user %>
+        <%= current_user.email %> | <%= link_to "Sign out", '/signout' %>
+        <% else %>
+        <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
+        <% end %>
+      </li>
+    </div>
+  </nav>
 
+  <body>
     <%= flash[:alert] %>
     <%= flash[:notice] %>
     <%= yield %>
