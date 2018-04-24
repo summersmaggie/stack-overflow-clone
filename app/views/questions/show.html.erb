@@ -2,20 +2,7 @@
   <h1><%= @question.question_title %></h1>
   <h2><%= @question.question_body %></h2>
 
-  <% if @question.answers.any? %>
-    <h4>Answers:</h4>
-    <ul>
-      <% @answers.each do |answer| %>
-        <p><%= answer.answer_title %></p>
-        <p><%= answer.answer_body %></p>
-      <% end %>
-    </ul>
-    <% else %>
-    <h5><%= link_to "No answers yet. Add an answer."%></h5>
-      <% end %>
-
-
-
-    <%= render "answers/form" %>
+    <%= render "answers/new" %>
+    <%= render "answers/show" %>
 
 </div>

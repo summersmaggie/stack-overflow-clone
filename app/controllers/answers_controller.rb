@@ -4,14 +4,14 @@ class AnswersController < ApplicationController
     @answer = Answer.new
   end
 
-  def create
-    @answer = Answer.new(answer_params)
-    if @answer.save
+  def update
+    @answer = Answer.find(params[:id])
+    if @answer.update(answer_params)
       flash[:notice] = "Answer saved!"
       redirect_to questions_path
     else
       flash[:alert] = "Sorry, couldn't save."
-      render :new
+      redirect_to '/'
     end
   end
 
