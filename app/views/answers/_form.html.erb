@@ -1,6 +1,5 @@
 <%= render "layouts/errors", :object => @answer %>
-
-<%= form_for @answer do |f| %>
+<%= form_for [@question, @answer], {controller: "answer", action: "create"} do |f| %>
   <%= f.label :answer_title %>
   <%= f.text_field :answer_title %>
   <%= f.label :answer_body %>
